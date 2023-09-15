@@ -31,13 +31,16 @@
         const sk = window.NostrTools.nip19.decode(nsec.value).data;
         const pk = window.NostrTools.getPublicKey(sk);
 
-        const event = {
-          kind: parseInt(kind.value, 10),
-          pubkey: pk,
-          created_at: Math.floor(Date.now() / 1000),
-          tags: [],
-          content: content.value,
-        };
+        const event = window.NostrTools.finishEvent(
+          {
+            kind: parseInt(kind.value, 10),
+            pubkey: pk,
+            created_at: Math.floor(Date.now() / 1000),
+            tags: [],
+            content: content.value,
+          },
+          sk
+        );
 
         const pool = new window.NostrTools.SimplePool();
         pool.publish(relays, event);
