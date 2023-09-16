@@ -34,7 +34,6 @@
         const event = window.NostrTools.finishEvent(
           {
             kind: parseInt(kind.value, 10),
-            pubkey: pk,
             created_at: Math.floor(Date.now() / 1000),
             tags: [],
             content: content.value,
