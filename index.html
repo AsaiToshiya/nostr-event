@@ -11,6 +11,9 @@
     </div>
     kind:
     <input id="kind" type="text" value="1" /><br />
+    tags:<br />
+    k:
+    <input id="k" type="text" /><br />
     nsec:
     <input id="nsec" type="text" size="50" /><br />
     <button onclick="handleClick()">publish</button><br />
@@ -35,7 +38,7 @@
           {
             kind: parseInt(kind.value, 10),
             created_at: Math.floor(Date.now() / 1000),
-            tags: [],
+            tags: [...(k.value ? [["k", k.value]] : [])],
             content: content.value,
           },
           sk
