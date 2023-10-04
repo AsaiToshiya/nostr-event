@@ -16,7 +16,9 @@
     <input id="k" type="text" /><br />
     nsec:
     <input id="nsec" type="text" size="50" /><br />
-    <button onclick="handleClick()">publish</button><br />
+    <button onclick="handleClick()">publish</button>
+    <button onclick="handleStringifyClick()">stringify (not publish)</button
+    ><br />
     JSON:
     <pre id="json"></pre>
 
@@ -49,6 +51,23 @@
         pool.close(relays);
 
         json.innerText = JSON.stringify(event, null, 2);
+      };
+
+      const handleStringifyClick = async () => {
+        const sk = window.NostrTools.nip19.decode(nsec.value).data;
+        const pk = window.NostrTools.getPublicKey(sk);
+
+        const event = window.NostrTools.finishEvent(
+          {
+            kind: parseInt(kind.value, 10),
+            created_at: Math.floor(Date.now() / 1000),
+            tags: [...(k.value ? [["k", k.value]] : [])],
+            content: content.value,
+          },
+          sk
+        );
+
+        json.innerText = JSON.stringify(event);
       };
     </script>
   </body>
