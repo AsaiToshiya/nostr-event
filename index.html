@@ -32,11 +32,11 @@
         "wss://relay.nostr.bg",
       ];
 
-      const handleClick = async () => {
+      const createEvent = () => {
         const sk = window.NostrTools.nip19.decode(nsec.value).data;
         const pk = window.NostrTools.getPublicKey(sk);
 
-        const event = window.NostrTools.finishEvent(
+        return window.NostrTools.finishEvent(
           {
             kind: parseInt(kind.value, 10),
             created_at: Math.floor(Date.now() / 1000),
@@ -45,6 +45,10 @@
           },
           sk
         );
+      };
+
+      const handleClick = async () => {
+        const event = createEvent();
 
         const pool = new window.NostrTools.SimplePool();
         pool.publish(relays, event);
@@ -54,18 +58,7 @@
       };
 
       const handleStringifyClick = async () => {
-        const sk = window.NostrTools.nip19.decode(nsec.value).data;
-        const pk = window.NostrTools.getPublicKey(sk);
-
-        const event = window.NostrTools.finishEvent(
-          {
-            kind: parseInt(kind.value, 10),
-            created_at: Math.floor(Date.now() / 1000),
-            tags: [...(k.value ? [["k", k.value]] : [])],
-            content: content.value,
-          },
-          sk
-        );
+        const event = createEvent();
 
         json.innerText = JSON.stringify(event);
       };
