@@ -12,6 +12,8 @@
     kind:
     <input id="kind" type="text" value="1" /><br />
     tags:<br />
+    d:
+    <input id="d" type="text" /><br />
     k:
     <input id="k" type="text" /><br />
     nsec:
@@ -41,7 +43,10 @@
           {
             kind: parseInt(kind.value, 10),
             created_at: Math.floor(Date.now() / 1000),
-            tags: [...(k.value ? [["k", k.value]] : [])],
+            tags: [
+              ...(d.value ? [["d", d.value]] : []),
+              ...(k.value ? [["k", k.value]] : []),
+            ],
             content: content.value,
           },
           sk
