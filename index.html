@@ -19,6 +19,8 @@
     proxy:
     <input id="proxyID" type="text" size="50" placeholder="id" />
     <input id="proxyProtocol" type="text" placeholder="protocol" /><br />
+    title:
+    <input id="title" type="text" /><br />
     nsec:
     <input id="nsec" type="text" size="50" /><br />
     <button onclick="handleClick()">publish</button>
@@ -29,13 +31,7 @@
 
     <script src="https://unpkg.com/nostr-tools/lib/nostr.bundle.js"></script>
     <script>
-      const relays = [
-        "wss://nos.lol",
-        "wss://nostr.bitcoiner.social",
-        "wss://nostr.mom",
-        "wss://relay.damus.io",
-        "wss://relay.nostr.bg",
-      ];
+      const relays = ["ws://localhost:7000"];
 
       const createEvent = () => {
         const sk = window.NostrTools.nip19.decode(nsec.value).data;
@@ -51,6 +47,7 @@
               ...(proxyID.value && proxyProtocol.value
                 ? [["proxy", proxyID.value, proxyProtocol.value]]
                 : []),
+              ...(title.value ? [["title", title.value]] : []),
             ],
             content: content.value,
           },
