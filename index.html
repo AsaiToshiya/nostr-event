@@ -31,7 +31,13 @@
 
     <script src="https://unpkg.com/nostr-tools/lib/nostr.bundle.js"></script>
     <script>
-      const relays = ["ws://localhost:7000"];
+      const relays = [
+        "wss://nos.lol",
+        "wss://nostr.bitcoiner.social",
+        "wss://nostr.mom",
+        "wss://relay.damus.io",
+        "wss://relay.nostr.bg",
+      ];
 
       const createEvent = () => {
         const sk = window.NostrTools.nip19.decode(nsec.value).data;
