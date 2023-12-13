@@ -21,6 +21,8 @@
     <input id="proxyProtocol" type="text" placeholder="protocol" /><br />
     title:
     <input id="title" type="text" /><br />
+    start:
+    <input id="start" type="text" placeholder="YYYY-MM-DD" /><br />
     nsec:
     <input id="nsec" type="text" size="50" /><br />
     <button onclick="handleClick()">publish</button>
@@ -54,6 +56,7 @@
                 ? [["proxy", proxyID.value, proxyProtocol.value]]
                 : []),
               ...(title.value ? [["title", title.value]] : []),
+              ...(start.value ? [["start", start.value]] : []),
             ],
             content: content.value,
           },
