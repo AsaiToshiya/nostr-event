@@ -16,6 +16,8 @@
     <input id="d" type="text" /><br />
     k:
     <input id="k" type="text" /><br />
+    name:
+    <input id="name" type="text" /><br />
     proxy:
     <input id="proxyID" type="text" size="50" placeholder="id" />
     <input id="proxyProtocol" type="text" placeholder="protocol" /><br />
@@ -52,6 +54,7 @@
             tags: [
               ...(d.value ? [["d", d.value]] : []),
               ...(k.value ? [["k", k.value]] : []),
+              ...(name.value ? [["name", name.value]] : []),
               ...(proxyID.value && proxyProtocol.value
                 ? [["proxy", proxyID.value, proxyProtocol.value]]
                 : []),
