@@ -27,6 +27,8 @@
     <input id="start" type="text" placeholder="YYYY-MM-DD" /><br />
     description:
     <input id="description" type="text" /><br />
+    clone:
+    <input id="clone" type="text" /><br />
     nsec:
     <input id="nsec" type="text" size="50" /><br />
     <button onclick="handleClick()">publish</button>
@@ -65,6 +67,7 @@
               ...(description.value
                 ? [["description", description.value]]
                 : []),
+              ...(clone.value ? [["clone", clone.value]] : []),
             ],
             content: content.value,
           },
