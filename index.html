@@ -25,6 +25,8 @@
     <input id="title" type="text" /><br />
     start:
     <input id="start" type="text" placeholder="YYYY-MM-DD" /><br />
+    description:
+    <input id="description" type="text" /><br />
     nsec:
     <input id="nsec" type="text" size="50" /><br />
     <button onclick="handleClick()">publish</button>
@@ -60,6 +62,9 @@
                 : []),
               ...(title.value ? [["title", title.value]] : []),
               ...(start.value ? [["start", start.value]] : []),
+              ...(description.value
+                ? [["description", description.value]]
+                : []),
             ],
             content: content.value,
           },
