@@ -29,6 +29,8 @@
     <input id="description" type="text" /><br />
     clone:
     <input id="clone" type="text" /><br />
+    web:
+    <input id="web" type="text" /><br />
     nsec:
     <input id="nsec" type="text" size="50" /><br />
     <button onclick="handleClick()">publish</button>
@@ -68,6 +70,7 @@
                 ? [["description", description.value]]
                 : []),
               ...(clone.value ? [["clone", clone.value]] : []),
+              ...(web.value ? [["web", web.value]] : []),
             ],
             content: content.value,
           },
