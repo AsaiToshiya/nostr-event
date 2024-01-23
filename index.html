@@ -31,6 +31,8 @@
     <input id="clone" type="text" /><br />
     web:
     <input id="web" type="text" /><br />
+    patches:
+    <input id="patches" type="text" /><br />
     nsec:
     <input id="nsec" type="text" size="50" /><br />
     <button onclick="handleClick()">publish</button>
@@ -71,6 +73,7 @@
                 : []),
               ...(clone.value ? [["clone", clone.value]] : []),
               ...(web.value ? [["web", web.value]] : []),
+              ...(patches.value ? [["patches", patches.value]] : []),
             ],
             content: content.value,
           },
